@@ -18,5 +18,5 @@ function getRandomNumber (start, end){
 const getCommentLength = (newComment, maxLength) => newComment.length <= maxLength;
 
 getRandomNumber(2, 7);
-getCommentLength('Комментарий', 20);  
+getCommentLength('Комментарий', 20);
 
