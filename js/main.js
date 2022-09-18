@@ -13,7 +13,7 @@ const getRandomNumber = (start, end) => {
   }
 
   return Math.floor(Math.random() * (end - start + 1)) + start; //формула с сайта https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-}
+};
 
 const getCommentLength = (newComment, maxLength) => newComment.length <= maxLength;
 
