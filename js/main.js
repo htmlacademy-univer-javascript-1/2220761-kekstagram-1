@@ -1,4 +1,4 @@
-function getRandomNumber (start, end){
+const getRandomNumber = (start, end) => {
 
   if(end < start){
     throw new Error('Начало диапазона не может быть больше конца');
