@@ -7,12 +7,12 @@ const MESSAGES = ['Всё отлично!',
 
 const NAMES = ['Екатерина','Дмитрий','Николай','Иван','София','Владимир','Анастасия', 'Елизавета'];
 
-const DESCRIPTIONS = ['Всегда начинайте свой день с хороших людей и кофе.', 
-'Мечтайте. Поверьте, в это. Добейтесь этого.', 
-'Это просто моя жизнь в моем неповторимом стиле.', 
-'Жить — это так здорово.', 
-'Селфи вместо тысячи слов.', 
-'Фотография ни стоит ничего, но воспоминания бесценны.'];
+const DESCRIPTIONS = ['Всегда начинайте свой день с хороших людей и кофе.',
+  'Мечтайте. Поверьте, в это. Добейтесь этого.',
+  'Это просто моя жизнь в моем неповторимом стиле.',
+  'Жить — это так здорово.',
+  'Селфи вместо тысячи слов.',
+  'Фотография ни стоит ничего, но воспоминания бесценны.'];
 
 const MIN_LIKES = 15;
 const MAX_LIKES = 200;
@@ -25,29 +25,23 @@ const getRandomPositiveInteger = (a, b) => {
   return Math.floor(result);
 };
 
-const getRandomArrayElement = (elements) => {
-  return elements[getRandomPositiveInteger(0, elements.length - 1)];
-};
+const getRandomArrayElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
-const createComments = (id) => {
-  return {
-    id,
-    avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
-    message: getRandomArrayElement(MESSAGES),
-    name: getRandomArrayElement(NAMES),
-  };
-};
+const createComments = (id) => ({
+  id,
+  avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
+  message: getRandomArrayElement(MESSAGES),
+  name: getRandomArrayElement(NAMES),
+});
 
-const createPhotosDescription = (id) => {
-  return {
-    id,
-    url: `photos/${id}.jpg`,
-    description: getRandomArrayElement(DESCRIPTIONS),
-    likes: getRandomPositiveInteger(MIN_LIKES, MAX_LIKES),
-    comments: createComments(id),
-  };
-};
+const createPhotosDescription = (id) => ({
+  id,
+  url: `photos/${id}.jpg`,
+  description: getRandomArrayElement(DESCRIPTIONS),
+  likes: getRandomPositiveInteger(MIN_LIKES, MAX_LIKES),
+  comments: createComments(id),
+});
 
-const PHOTOS_DESCRIPTIONS = Array.from({length: MAX_COUNT_PHOTOS}).map((element, index) => element = createPhotosDescription(index + 1));
+const PHOTOS_DESCRIPTIONS = Array.from({length: MAX_COUNT_PHOTOS}).map((element, index) => {element = createPhotosDescription(index + 1);});
 
 PHOTOS_DESCRIPTIONS;
