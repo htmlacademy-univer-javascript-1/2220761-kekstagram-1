@@ -44,4 +44,5 @@ const createPhotosDescription = (id) => ({
 
 const PHOTOS_DESCRIPTIONS = Array.from({length: MAX_COUNT_PHOTOS}).map((element, index) => {element = createPhotosDescription(index + 1);});
 
+// eslint-disable-next-line no-unused-expressions
 PHOTOS_DESCRIPTIONS;
