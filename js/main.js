@@ -39,7 +39,7 @@ const createPhotosDescription = (id) => ({
   url: `photos/${id}.jpg`,
   description: getRandomArrayElement(DESCRIPTIONS),
   likes: getRandomPositiveInteger(MIN_LIKES, MAX_LIKES),
-  comments: createComments(id),
+  comments: Array.from({length: getRandomPositiveInteger(1, 8)}).map((element, index) => {element = createComments(index + 1);}),
 });
 
 const PHOTOS_DESCRIPTIONS = Array.from({length: MAX_COUNT_PHOTOS}).map((element, index) => {element = createPhotosDescription(index + 1);});
