@@ -1,4 +1,3 @@
-import { getPhotosDescription } from './mocks.js';
-import { getThumbnails } from './thumbnails.js';
+import { generatePictures } from './thumbnails.js';
 
-getThumbnails(getPhotosDescription);
+generatePictures();

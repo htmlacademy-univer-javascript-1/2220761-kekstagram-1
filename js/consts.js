@@ -14,7 +14,14 @@ export const DESCRIPTIONS = ['Всегда начинайте свой день 
   'Селфи вместо тысячи слов.',
   'Фотография ни стоит ничего, но воспоминания бесценны.'];
 
-export const MIN_LIKES = 15;
-export const MAX_LIKES = 200;
 export const MAX_COUNT_PHOTOS = 25;
-export const MAX_COUNT_COMMENTS = 6;
+
+export const CountLikes = {
+  MIN: 15,
+  MAX: 200
+};
+
+export const CountComments = {
+  MIN: 1,
+  MAX: 6
+};
