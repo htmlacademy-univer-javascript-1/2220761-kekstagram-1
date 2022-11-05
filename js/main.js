@@ -1,3 +1,3 @@
-import { generatePictures } from './thumbnails.js';
+import { generatePictures } from './big-picture.js';
 
 generatePictures();

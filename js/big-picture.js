@@ -1,3 +1,6 @@
+import { getPhotosDescription } from './mocks.js';
+import { getThumbnails } from './thumbnails.js';
+
 const bigPicture = document.querySelector('.big-picture');
 const closeButton = document.querySelector('.big-picture__cancel');
 
@@ -24,26 +27,42 @@ const renderBigPicture = (picture) => {
   bigPicture.querySelector('.comments-count').textContent = picture.comments.length;
   bigPicture.querySelector('.social__comment-count').classList.add('hidden');
   bigPicture.querySelector('.comments-loader').classList.add('hidden');
-
   renderComments(picture.comments);
 };
 
-const pictureClose = () => {
+const closePicture = () => {
   document.body.classList.remove('modal-open');
   bigPicture.classList.add('hidden');
 };
 
 const onEscKeyDown = (evt) => {
   if (evt.key === 'Escape') {
-    pictureClose();
+    closePicture();
     document.removeEventListener('keydown', onEscKeyDown);
   }
 };
 
-export const pictureOpen = (element) => {
+const openPicture = (element) => {
   document.body.classList.add('modal-open');
   bigPicture.classList.remove('hidden');
   renderBigPicture(element);
-  closeButton.addEventListener('click', pictureClose);
+  closeButton.addEventListener('click', closePicture);
   document.addEventListener('keydown', onEscKeyDown);
+};
+
+const onPictureClick = (evt) => {
+  evt.preventDefault();
+  const target = evt.target;
+  const parent = target.closest('.js-picture');
+  const id = parent.dataset.id;
+  openPicture(getPhotosDescription[id - 1]);
+};
+
+export const generatePictures = () => {
+  getThumbnails(getPhotosDescription);
+  const pictures = document.querySelectorAll('.js-picture');
+
+  pictures.forEach((picture) => {
+    picture.addEventListener('click', onPictureClick);
+  });
 };
