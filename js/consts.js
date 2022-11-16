@@ -25,3 +25,17 @@ export const CountComments = {
   MIN: 1,
   MAX: 6
 };
+
+export const MAX_HASHTAG_SYMBOLS = 20;
+export const MAX_HASHTAGS = 5;
+export const MAX_STRING_LENGTH = 140;
+
+export const ErrorMessages = {
+  SEPARETED_BY_SPACES: 'Хэш-теги разделяются пробелами',
+  START_WITH: 'Хэш-тег должен начинаться с символа #',
+  NO_REPEAT: 'Хэш-теги не должны повторяться',
+  HASHTAG_MAX_LENGTH: `Максимальная длина одного хэш-тега ${MAX_HASHTAG_SYMBOLS} символов, включая решётку`,
+  MAX_COUNT_HASHTAG: `Нельзя указывать больше ${MAX_HASHTAGS} хэш-тегов`,
+  UNACCEPTABLE_SYMBOLS: 'Хэш-тег содержит недопустимые символы',
+  COMMENT_MAX_LENGTH: `Длина комментария не может составлять больше ${MAX_STRING_LENGTH} символов`
+};
