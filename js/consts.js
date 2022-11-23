@@ -14,21 +14,21 @@ export const DESCRIPTIONS = ['Всегда начинайте свой день 
   'Селфи вместо тысячи слов.',
   'Фотография ни стоит ничего, но воспоминания бесценны.'];
 
-export const MAX_COUNT_PHOTOS = 25;
-
 export const CountLikes = {
   MIN: 15,
   MAX: 200
 };
 
 export const CountComments = {
-  MIN: 1,
-  MAX: 6
+  MIN: 0,
+  MAX: 10
 };
 
+export const MAX_COUNT_PHOTOS = 25;
 export const MAX_HASHTAG_SYMBOLS = 20;
 export const MAX_HASHTAGS = 5;
 export const MAX_STRING_LENGTH = 140;
+export const MAX_SHOWN_COMMENTS = 5;
 
 export const ErrorMessages = {
   SEPARETED_BY_SPACES: 'Хэш-теги разделяются пробелами',

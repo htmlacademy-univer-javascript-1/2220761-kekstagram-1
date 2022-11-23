@@ -6,5 +6,10 @@ const getPictureTemplate = ({id, url, comments, likes}) => `<a href="#" class="p
 </p>
 </a>`;
 
+export const getCommentTemplate = ({avatar, message, name}) => `<li class="social__comment">
+  <img class="social__picture" src="${avatar}" alt="${name}" width="35" height="35">
+  <p class="social__text">${message}</p>
+</li>`;
+
 const mainContainer = document.querySelector('.js-pictures');
 export const getThumbnails = (data) => mainContainer.insertAdjacentHTML('beforeend', data.map((photo) => getPictureTemplate(photo)).join(''));
