@@ -9,12 +9,8 @@ const sliderWrapper = document.querySelector('.img-upload__effect-level');
 const imgPreview = document.querySelector('.img-upload__preview').querySelector('img');
 
 const checkScaleClicks = (val) => {
-  if (val > PercentageScale.MAX) {
-    val = PercentageScale.MAX;
-  }
-  if (val <= PercentageScale.MIN){
-    val = PercentageScale.MIN;
-  }
+  val = (val > PercentageScale.MAX) ? PercentageScale.MAX : val;
+  val = (val <= PercentageScale.MIN) ? PercentageScale.MIN : val;
   return val;
 };
 
