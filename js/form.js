@@ -1,4 +1,5 @@
 import { MAX_HASHTAGS, MAX_HASHTAG_SYMBOLS, MAX_STRING_LENGTH, ErrorMessages } from './consts.js';
+import { updateSliderSettings, onScaleButtonClick  } from './effect-filters.js';
 
 const submitButton = document.querySelector('.img-upload__submit');
 const uploadFileButton = document.querySelector('#upload-file');
@@ -8,6 +9,8 @@ const closeEditingFormButton = form.querySelector('.img-upload__cancel');
 
 const hashtagsField = form.querySelector('.text__hashtags');
 const commentsField = form.querySelector('.text__description');
+const imgPreview = document.querySelector('.img-upload__preview').querySelector('img');
+const uploadEffects = document.querySelector('.img-upload__effects');
 const body = document.querySelector('body');
 
 const pristine = new Pristine(form, {
@@ -100,6 +103,7 @@ commentsField.addEventListener('keydown', (evt) => {
 const closeForm = () => {
   body.classList.remove('modal-open');
   editingForm.classList.add('hidden');
+  document.querySelector('.img-upload__effect-level').classList.add('hidden');
   uploadFileButton.value = '';
   commentsField.value = '';
   hashtagsField.value = '';
@@ -116,10 +120,14 @@ closeEditingFormButton.addEventListener('click', closeForm);
 
 export const renderUploadForm = () => {
   uploadFileButton.addEventListener('change', () => {
+    imgPreview.removeAttribute('class');
+    imgPreview.removeAttribute('style');
     editingForm.classList.remove('hidden');
     body.classList.add('modal-open');
     document.addEventListener('keydown', onEscKeyDown);
     buttonAdjustment();
+    uploadEffects.addEventListener('change', updateSliderSettings);
+    onScaleButtonClick();
   });
   validateForm();
 };
