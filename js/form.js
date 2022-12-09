@@ -1,5 +1,5 @@
 import { MAX_HASHTAGS, MAX_HASHTAG_SYMBOLS, MAX_STRING_LENGTH, ErrorMessages } from './consts.js';
-import { updateSliderSettings, onScaleButtonClick  } from './effect-filters.js';
+import { updateSliderSettings, addEventScaleButton  } from './effect-filters.js';
 
 const submitButton = document.querySelector('.img-upload__submit');
 const uploadFileButton = document.querySelector('#upload-file');
@@ -127,7 +127,7 @@ export const renderUploadForm = () => {
     document.addEventListener('keydown', onEscKeyDown);
     buttonAdjustment();
     uploadEffects.addEventListener('change', updateSliderSettings);
-    onScaleButtonClick();
+    addEventScaleButton();
   });
   validateForm();
 };

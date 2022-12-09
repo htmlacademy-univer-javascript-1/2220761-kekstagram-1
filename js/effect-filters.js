@@ -8,10 +8,7 @@ const slider = document.querySelector('.effect-level__slider');
 const sliderWrapper = document.querySelector('.img-upload__effect-level');
 const imgPreview = document.querySelector('.img-upload__preview').querySelector('img');
 
-const checkScaleClicks = (val) => {
-  val = Math.min(Math.max(val, PercentageScale.MIN), PercentageScale.MAX);
-  return val;
-};
+const checkScaleClicks = (val) => Math.min(Math.max(val, PercentageScale.MIN), PercentageScale.MAX);
 
 const changeScale = (val) => {
   const sliderNumber = checkScaleClicks(Number(scaleValue.value.replace('%', '')) + PercentageScale.STEP * val);
@@ -19,9 +16,12 @@ const changeScale = (val) => {
   scaleValue.value = `${sliderNumber}%`;
 };
 
-export const onScaleButtonClick = () => {
-  scaleBigger.addEventListener('click', () => changeScale(1));
-  scaleSmaller.addEventListener('click', () => changeScale(-1));
+const onScaleBiggerButtonClick  = () => changeScale(1);
+const onScaleSmallerButtonClick = () => changeScale(-1);
+
+export const addEventScaleButton = () => {
+  scaleBigger.addEventListener('click', onScaleBiggerButtonClick);
+  scaleSmaller.addEventListener('click', onScaleSmallerButtonClick);
 };
 
 export const createSlider = () => {
