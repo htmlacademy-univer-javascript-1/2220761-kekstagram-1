@@ -1,7 +1,11 @@
 import { generatePictures } from './big-picture.js';
 import { renderUploadForm } from './form.js';
-import { createSlider } from './effect-filters.js';
+import { getData } from './api.js';
+import { showAlert } from './utils.js';
+import { ALERT_SHOW_TIME } from './consts.js';
 
-generatePictures();
+getData(
+  (photos) => generatePictures(photos),
+  () => showAlert('Не удалось загрузить фотографии, обновите страницу', ALERT_SHOW_TIME),
+);
 renderUploadForm();
-createSlider();
