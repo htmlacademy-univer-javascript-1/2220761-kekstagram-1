@@ -1,4 +1,4 @@
-import { generatePictures } from './big-picture.js';
+import { generatePictures } from './thumbnails.js';
 import { renderUploadForm } from './form.js';
 import { getData } from './api.js';
 import { showAlert } from './utils.js';

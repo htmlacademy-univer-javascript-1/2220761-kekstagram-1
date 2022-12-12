@@ -1,6 +1,6 @@
 import { MAX_HASHTAGS, MAX_HASHTAG_SYMBOLS, MAX_STRING_LENGTH, ErrorMessages } from './consts.js';
 import { updateSliderSettings, addEventScaleButton, createSlider } from './effect-filters.js';
-import { renderMessage } from './message.js';
+import { renderMessage } from './messages.js';
 import { sendData } from './api.js';
 
 const submitButton = document.querySelector('.img-upload__submit');

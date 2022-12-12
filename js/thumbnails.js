@@ -1,4 +1,4 @@
-import { openPicture } from './big-picture';
+import { openPicture } from './big-picture.js';
 
 const getPictureTemplate = ({id, url, comments, likes}) => `<a href="#" class="picture js-picture" data-id="${id}">
 <img class="picture__img" src="${url}" width="182" height="182" alt="Случайная фотография">
