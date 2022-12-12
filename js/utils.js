@@ -1,3 +1,5 @@
+import { ALERT_SHOW_TIME } from './consts.js';
+
 export const getRandomPositiveInteger = (a, b) => {
   const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
   const upper = Math.floor(Math.max(Math.abs(a), Math.abs(b)));
@@ -7,7 +9,7 @@ export const getRandomPositiveInteger = (a, b) => {
 
 export const getRandomElement = (elements) => elements[getRandomPositiveInteger(0, elements.length - 1)];
 
-export const showAlert = (message, alertShowTime) => {
+export const showAlert = () => {
   const alertContainer = document.createElement('div');
   alertContainer.style.zIndex = '100';
   alertContainer.style.position = 'absolute';
@@ -17,11 +19,10 @@ export const showAlert = (message, alertShowTime) => {
   alertContainer.style.padding = '10px 3px';
   alertContainer.style.fontSize = '30px';
   alertContainer.style.textAlign = 'center';
-  alertContainer.style.backgroundColor = '#f5cc00';
+  alertContainer.style.backgroundColor = 'red';
 
-  alertContainer.textContent = message;
-
+  alertContainer.textContent = 'Не удалось загрузить фотографии';
   document.body.append(alertContainer);
 
-  setTimeout(() => alertContainer.remove(), alertShowTime);
+  setTimeout(() => alertContainer.remove(), ALERT_SHOW_TIME);
 };

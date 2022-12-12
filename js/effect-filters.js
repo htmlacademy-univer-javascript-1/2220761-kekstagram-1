@@ -1,4 +1,4 @@
-import { PercentageScale, Effects } from './consts.js';
+import { Scale, Effects } from './consts.js';
 
 const scaleValue = document.querySelector('.scale__control--value');
 const scaleBigger = document.querySelector('.scale__control--bigger');
@@ -8,10 +8,10 @@ const slider = document.querySelector('.effect-level__slider');
 const sliderWrapper = document.querySelector('.img-upload__effect-level');
 const imgPreview = document.querySelector('.img-upload__preview').querySelector('img');
 
-const checkScaleClicks = (val) => Math.min(Math.max(val, PercentageScale.MIN), PercentageScale.MAX);
+const checkScaleClicks = (val) => Math.min(Math.max(val, Scale.MIN), Scale.MAX);
 
 const changeScale = (val) => {
-  const sliderNumber = checkScaleClicks(Number(scaleValue.value.replace('%', '')) + PercentageScale.STEP * val);
+  const sliderNumber = checkScaleClicks(Number(scaleValue.value.replace('%', '')) + Scale.STEP * val);
   imgPreview.style.transform = `scale(${sliderNumber / 100})`;
   scaleValue.value = `${sliderNumber}%`;
 };

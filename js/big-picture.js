@@ -52,7 +52,7 @@ const renderBigPicture = (picture) => {
 const closePicture = () => {
   document.body.classList.remove('modal-open');
   bigPicture.classList.add('hidden');
-  closeButton.removeEventListener('click', onCloseButton);
+  closeButton.removeEventListener('click', onCloseButtonClick);
   document.removeEventListener('keydown', onEscKeyDown);
   commentsLoader.classList.remove('hidden');
   commentsLoader.removeEventListener('click', onCommentsButtonLoader);
@@ -65,7 +65,7 @@ function onEscKeyDown(evt) {
   }
 }
 
-function onCloseButton() {
+function onCloseButtonClick() {
   closePicture();
 }
 
@@ -78,6 +78,6 @@ export const openPicture = (element) => {
   document.body.classList.add('modal-open');
   bigPicture.classList.remove('hidden');
   renderBigPicture(element);
-  closeButton.addEventListener('click', closePicture);
+  closeButton.addEventListener('click', onCloseButtonClick);
   document.addEventListener('keydown', onEscKeyDown);
 };
