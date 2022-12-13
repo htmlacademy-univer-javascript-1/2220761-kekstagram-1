@@ -1,5 +1,4 @@
-import { getPhotosDescription } from './mocks.js';
-import { getThumbnails, getCommentTemplate } from './thumbnails.js';
+import { getCommentTemplate } from './thumbnails.js';
 import { MAX_SHOWN_COMMENTS } from './consts.js';
 
 const bigPicture = document.querySelector('.big-picture');
@@ -53,7 +52,7 @@ const renderBigPicture = (picture) => {
 const closePicture = () => {
   document.body.classList.remove('modal-open');
   bigPicture.classList.add('hidden');
-  closeButton.removeEventListener('click', onCloseButton);
+  closeButton.removeEventListener('click', onCloseButtonClick);
   document.removeEventListener('keydown', onEscKeyDown);
   commentsLoader.classList.remove('hidden');
   commentsLoader.removeEventListener('click', onCommentsButtonLoader);
@@ -66,7 +65,7 @@ function onEscKeyDown(evt) {
   }
 }
 
-function onCloseButton() {
+function onCloseButtonClick() {
   closePicture();
 }
 
@@ -75,27 +74,10 @@ function onCommentsButtonLoader() {
   renderComments();
 }
 
-const openPicture = (element) => {
+export const openPicture = (element) => {
   document.body.classList.add('modal-open');
   bigPicture.classList.remove('hidden');
   renderBigPicture(element);
-  closeButton.addEventListener('click', closePicture);
+  closeButton.addEventListener('click', onCloseButtonClick);
   document.addEventListener('keydown', onEscKeyDown);
-};
-
-const onPictureClick = (evt) => {
-  evt.preventDefault();
-  const target = evt.target;
-  const parent = target.closest('.js-picture');
-  const id = parent.dataset.id;
-  openPicture(getPhotosDescription[id - 1]);
-};
-
-export const generatePictures = () => {
-  getThumbnails(getPhotosDescription);
-  const pictures = document.querySelectorAll('.js-picture');
-
-  pictures.forEach((picture) => {
-    picture.addEventListener('click', onPictureClick);
-  });
 };

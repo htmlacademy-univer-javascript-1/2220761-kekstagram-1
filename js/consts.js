@@ -45,7 +45,7 @@ export const CountComments = {
   MAX: 10
 };
 
-export const PercentageScale = {
+export const Scale = {
   STEP: 25,
   MIN: 25,
   MAX: 100
@@ -56,9 +56,10 @@ export const MAX_HASHTAG_SYMBOLS = 20;
 export const MAX_HASHTAGS = 5;
 export const MAX_STRING_LENGTH = 140;
 export const MAX_SHOWN_COMMENTS = 5;
+export const ALERT_SHOW_TIME = 500;
 
 export const ErrorMessages = {
-  SEPARETED_BY_SPACES: 'Хэш-теги разделяются пробелами',
+  SEPARATED_BY_SPACES: 'Хэш-теги разделяются пробелами',
   START_WITH: 'Хэш-тег должен начинаться с символа #',
   NO_REPEAT: 'Хэш-теги не должны повторяться',
   HASHTAG_MAX_LENGTH: `Максимальная длина одного хэш-тега ${MAX_HASHTAG_SYMBOLS} символов, включая решётку`,

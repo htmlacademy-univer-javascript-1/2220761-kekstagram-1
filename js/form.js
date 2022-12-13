@@ -1,5 +1,7 @@
 import { MAX_HASHTAGS, MAX_HASHTAG_SYMBOLS, MAX_STRING_LENGTH, ErrorMessages } from './consts.js';
-import { updateSliderSettings, addEventScaleButton  } from './effect-filters.js';
+import { updateSliderSettings, addEventScaleButton, createSlider } from './effect-filters.js';
+import { renderMessage } from './messages.js';
+import { sendData } from './api.js';
 
 const submitButton = document.querySelector('.img-upload__submit');
 const uploadFileButton = document.querySelector('#upload-file');
@@ -38,7 +40,7 @@ const hashtagHandler = (value) => {
   const rules = [
     {
       check: inputArray.some((item) => item.indexOf('#', 1) >= 1),
-      error: ErrorMessages.SEPARETED_BY_SPACES,
+      error: ErrorMessages.SEPARATED_BY_SPACES,
     },
     {
       check: inputArray.some((item) => item[0] !== '#'),
@@ -109,14 +111,39 @@ const closeForm = () => {
   hashtagsField.value = '';
 };
 
+const closeFormWithDefaultSettings  = () => {
+  closeForm();
+  imgPreview.removeAttribute('class');
+  imgPreview.removeAttribute('style');
+  form.reset();
+};
+
 const onEscKeyDown = (evt) => {
   if (evt.key === 'Escape') {
-    closeForm();
+    closeFormWithDefaultSettings();
     document.removeEventListener('keydown', onEscKeyDown);
   }
 };
 
 closeEditingFormButton.addEventListener('click', closeForm);
+
+const setFormSubmit = (onSuccess, onError) => {
+  form.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    submitButton.disabled = true;
+    sendData(
+      () => {
+        onSuccess();
+        renderMessage(true);
+      },
+      () => {
+        onError();
+        renderMessage();
+      },
+      new FormData(evt.target),
+    );
+  });
+};
 
 export const renderUploadForm = () => {
   uploadFileButton.addEventListener('change', () => {
@@ -129,5 +156,7 @@ export const renderUploadForm = () => {
     uploadEffects.addEventListener('change', updateSliderSettings);
     addEventScaleButton();
   });
+  createSlider();
   validateForm();
+  setFormSubmit(closeFormWithDefaultSettings, closeForm);
 };
