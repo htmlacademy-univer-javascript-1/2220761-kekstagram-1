@@ -30,6 +30,7 @@ export const MAX_HASHTAGS = 5;
 export const MAX_STRING_LENGTH = 140;
 export const MAX_SHOWN_COMMENTS = 5;
 export const ALERT_SHOW_TIME = 500;
+export const TIMEOUT_DELAY = 500;
 
 export const ErrorMessages = {
   SEPARATED_BY_SPACES: 'Хэш-теги разделяются пробелами',

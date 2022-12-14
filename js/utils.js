@@ -1,4 +1,4 @@
-import { ALERT_SHOW_TIME } from './consts.js';
+import { ALERT_SHOW_TIME, TIMEOUT_DELAY } from './consts.js';
 
 export const getRandomPositiveInteger = (a, b) => {
   const lower = Math.ceil(Math.min(Math.abs(a), Math.abs(b)));
@@ -26,3 +26,25 @@ export const showAlert = () => {
 
   setTimeout(() => alertContainer.remove(), ALERT_SHOW_TIME);
 };
+
+export const shuffleArray = (arr) => arr.map((a) => [Math.random(), a]).sort((a, b) => a[0] - b[0]).map((a) => a[1]);
+
+export function debounce (callback, timeoutDelay = TIMEOUT_DELAY) {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+}
+
+export function throttle (callback, delayBetweenFrames) {
+  let lastTime = 0;
+
+  return (...rest) => {
+    const now = new Date();
+    if (now - lastTime >= delayBetweenFrames) {
+      callback.apply(this, rest);
+      lastTime = now;
+    }
+  };
+}

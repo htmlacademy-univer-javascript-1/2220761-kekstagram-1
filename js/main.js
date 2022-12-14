@@ -1,10 +1,10 @@
-import { generatePictures } from './thumbnails.js';
 import { renderUploadForm } from './form.js';
 import { getData } from './api.js';
 import { showAlert } from './utils.js';
+import { initFilters } from './filter.js';
 
 getData(
-  (photos) => generatePictures(photos),
+  (photos) => initFilters(photos),
   () => showAlert(),
 );
 renderUploadForm();
