@@ -27,6 +27,11 @@ const onPictureClick = (evt) => {
   openPicture(photo);
 };
 
+export const removeThumbnails = () => {
+  const pictures = document.querySelectorAll('.js-picture');
+  pictures.forEach((picture) => picture.remove());
+};
+
 export const generatePictures = (photos) => {
   data = photos.slice();
   getThumbnails();
