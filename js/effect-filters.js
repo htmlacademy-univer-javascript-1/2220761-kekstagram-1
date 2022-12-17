@@ -1,4 +1,5 @@
 import { Scale, Effects } from './consts.js';
+import { imgPreview } from './user-photo.js';
 
 const scaleValue = document.querySelector('.scale__control--value');
 const scaleBigger = document.querySelector('.scale__control--bigger');
@@ -6,7 +7,6 @@ const scaleSmaller = document.querySelector('.scale__control--smaller');
 const effectValue = document.querySelector('.effect-level__value');
 const slider = document.querySelector('.effect-level__slider');
 const sliderWrapper = document.querySelector('.img-upload__effect-level');
-const imgPreview = document.querySelector('.img-upload__preview').querySelector('img');
 
 const checkScaleClicks = (val) => Math.min(Math.max(val, Scale.MIN), Scale.MAX);
 
